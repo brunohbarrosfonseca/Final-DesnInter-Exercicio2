@@ -1,30 +1,27 @@
-// 1. criar uma função para verificar 
-// se o gatilho chegou ao topo da página
+//Evento de escuta
 function escutaScroll(event){
-    // A função deve...
-    // Pegar a lista de gatilhos
+    
+//Ver gatilhos 
     let gatilhos = document.querySelectorAll(".gatilhos > div");
 
-    // A função deve...
-    // Fazer loop pela lista de gatilhos
+//Loop de gatilhos
     for(let gatilho of gatilhos){
-        // Para cada um deles, pegar a posição atual
+//Posições
         let posicao = gatilho.getBoundingClientRect();
-        // Para cada um deles, pegar o valor da propriedade data-alvo
+//Propriedade data-alvo
         let alvo = gatilho.dataset.alvo;
-        // Selecionar o elemento reference a este alvo
+// Elemento do alvo
         let passo = document.querySelector('.'+alvo);
-        // Verificar se o gatilho está acima do topo da página
+//Posição no topo
         if(posicao.top <= 0 && posicao.top > -posicao.height){
-            // se sim, adiciona a classe que exibe o gráfico
+// Se está no topo, exibe
             passo.classList.add('passo-ativo');
         }else{
-            // caso contrário, retire a classe
+// Se não, não exibe
             passo.classList.remove('passo-ativo');
         }
     }
 }
 
-// 2. pedir ao navegador para escutar 
-// o evento de rolagem da página
+//Evento de rolagem da página
 window.addEventListener('scroll', escutaScroll);
